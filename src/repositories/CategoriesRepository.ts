@@ -1,11 +1,9 @@
 import { Category } from "../model/Category";
+import { ICategoryRepository, ICreateCategoryDto } from "./ICategoriesRepository";
 
-interface ICreateCategoryDto{
-    name: string;
-    description: string;
-}
 
-export class CategoriesRepository{
+
+export class CategoriesRepository implements ICategoryRepository{
 
     private categories: Category[];
 
@@ -13,7 +11,7 @@ export class CategoriesRepository{
         this.categories = [];
     }
 
-    create({name, description}: ICreateCategoryDto): void{
+    create({name, description}:  ICreateCategoryDto): void{
 
         const category = new Category();
         //setta os atributos da classe
